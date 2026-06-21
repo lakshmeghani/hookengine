@@ -1,0 +1,33 @@
+services:
+
+  db:
+    container_name: webhook-postgres
+    image: postgres:17-alpine
+    restart: always
+    shm_size: 128mb
+    volumes:
+      - postgres_webhook_volume:/var/lib/postgres/data
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+
+  adminer:
+    container_name: webhook-adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  redis:
+    container_name: webhook-redis
+    image: redis:8-alpine
+    command: redis-server --save 60 1 --loglevel warning
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_webhook_volume:/data
+
+volumes:
+  postgres_webhook_volume: 
+  redis_webhook_volume:
