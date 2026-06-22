@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { AccountStatus } from "../enums/account-status";
-import { Subscriptions } from "../../subscriptions/entities/subscriptions.entity";
+import { Subscription } from "../../subscriptions/entities/subscriptions.entity";
 import { WebhookEvent } from "../../events/entities/events.entity";
 
 @Entity()
@@ -24,8 +24,8 @@ export class Account {
   @Column()
   accessKey: string;
 
-  @OneToMany(() => Subscriptions, (subscription) => subscription.account)
-  subscriptions: Subscriptions
+  @OneToMany(() => Subscription, (subscription) => subscription.account)
+  subscriptions: Subscription
 
   @OneToMany(() => WebhookEvent, (webhook) => webhook.account)
   webhookEvent: WebhookEvent

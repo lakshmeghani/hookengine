@@ -1,5 +1,5 @@
 import { WebhookEvent } from "../../events/entities/events.entity";
-import { Subscriptions } from "../../subscriptions/entities/subscriptions.entity";
+import { Subscription } from "../../subscriptions/entities/subscriptions.entity";
 import { EventStatus } from "../enums/audit-event.enum";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -8,8 +8,8 @@ export class WebhookLog {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Subscriptions)
-  subscription: Subscriptions;
+  @ManyToOne(() => Subscription)
+  subscription: Subscription;
 
   @ManyToOne(() => WebhookEvent)
   webhookEvent: WebhookEvent;

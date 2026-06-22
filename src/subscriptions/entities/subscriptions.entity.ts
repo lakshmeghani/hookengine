@@ -1,9 +1,9 @@
 import { Account } from "../../accounts/entities/accounts.entity";
-import { EventTypes } from "../../event-type/entities/event-types.entity";
+import { EventType } from "../../event-type/entities/event-types.entity";
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Subscriptions {
+export class Subscription {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -13,9 +13,9 @@ export class Subscriptions {
   @ManyToOne(() => Account, (account) => account.subscriptions)
   account: Account
 
-  @ManyToMany(() => EventTypes)
+  @ManyToMany(() => EventType)
   @JoinTable()
-  eventTypesIds: EventTypes[]
+  eventTypeIds: EventType[]
 
   @Column()
   hmacSecretKey: string;

@@ -1,5 +1,5 @@
 import { Account } from "src/accounts/entities/accounts.entity";
-import { EventTypes } from "src/event-type/entities/event-types.entity";
+import { EventType } from "src/event-type/entities/event-types.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -10,8 +10,8 @@ export class WebhookEvent {
   @ManyToOne(() => Account, (account) => account.webhookEvent)
   account: Account
 
-  @ManyToOne(() => EventTypes)
-  eventType: EventTypes
+  @ManyToOne(() => EventType)
+  eventType: EventType
 
   @Column({ type: 'json' })
   rawPayload: JSON
