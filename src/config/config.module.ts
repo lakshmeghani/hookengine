@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigService, ConfigModule as NestConfigModule } from '@nestjs/config';
 import { databaseConfig } from './namespaced-configs/database.config';
 import { redisConfig } from './namespaced-configs/redis.config';
+import { secretsConfig } from './namespaced-configs/secrets.config';
 import { configSchema } from './config.schema';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { BullModule } from '@nestjs/bullmq';
@@ -14,6 +15,7 @@ import { BullModule } from '@nestjs/bullmq';
       load: [
         databaseConfig,
         redisConfig,
+        secretsConfig,
       ],
       validationSchema: configSchema,
       validationOptions: {

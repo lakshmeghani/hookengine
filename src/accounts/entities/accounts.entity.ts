@@ -5,13 +5,13 @@ import { WebhookEvent } from "../../events/entities/events.entity";
 
 @Entity()
 export class Account {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ length: 500 })
   companyName: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column({ 
